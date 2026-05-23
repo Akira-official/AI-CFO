@@ -1,0 +1,32 @@
+{
+  "name": "vyoma-intelligence",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Enterprise-Grade Agentic AI Content Sourcing Platform for Media & Newsrooms",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\" \"npm run dev:ai\"",
+    "dev:web": "turbo run dev --filter=@vyoma/web",
+    "dev:api": "turbo run dev --filter=@vyoma/api",
+    "dev:ai": "turbo run dev --filter=@vyoma/ai-engine",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "db:migrate": "turbo run db:migrate --filter=@vyoma/api",
+    "db:seed": "turbo run db:seed --filter=@vyoma/api"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "turbo": "^2.1.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "npm@10.0.0"
+}
